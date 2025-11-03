@@ -113,7 +113,7 @@ def scrape_article(url):
     if not content_div:
         return ""
     paragraphs = content_div.find_all("p")
-<<<<<<< HEAD
+    
     return ' '.join(p.get_text().strip() for p in paragraphs if p.get_text())
 
 def insert_raw_article(title, url, full_text, source="TechCrunch"):
@@ -163,21 +163,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-=======
-    content = ' '.join(p.get_text().strip() for p in paragraphs if p.get_text())
-    return content
-
-def main():
-    flagged_articles = scrape_homepage()
-    for article in flagged_articles:
-        content = scrape_article(article['url'])
-        if content and flag_article(content):
-            summary = summarize_text(content)
-            print(f"Title: {article['title']}")
-            print(f"URL: {article['url']}")
-            print(f"Summary: {summary}")
-            print("-" * 80)
-
-if __name__ == "__main__":
-    main()
->>>>>>> 17f3f43e9847635fcd7f9e46e98d87515ebcf68a
