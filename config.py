@@ -12,5 +12,8 @@ KEYWORDS = [
     "money laundering", "credit card fraud", "sms spam", "phishing page",
     "fake website", "stolen data", "cryptocurrency scam", "cyber attack",
     "unauthorized access", "supply chain attack", "botnet", "AI scam",
-    "encrypted messaging", "deep web", "dark web"
+    "encrypted messaging", "deep web", "dark web", "data leak", "identity mismatch",
+    "fake invoice", "data leak", "network vulnerability", "billing discrepancy",
+    "unexpected charge", "account irregularity", "credit alert", "suspicious login",
+    "unusual activity", "security breach", "account takeover", "financial fraud"
 ]
