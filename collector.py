@@ -28,11 +28,14 @@ def scrape_articles(pages=5):
     for page_num in range(1, pages + 1):
         url = f"{base_url}{page_num}/"
         print(f"Scraping {url}")
-        resp = requests.get(url)
-        soup = BeautifulSoup(resp.text, "html.parser")
+        try:
+            resp = requests.get(url, timeout=10)
+            resp.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            print(f"⚠️ Error fetching page {url}: {e}")
+            continue
 
-        with open(f"techcrunch_page_{page_num}.html", "w", encoding="utf-8") as f:
-            f.write(soup.prettify())
+        soup = BeautifulSoup(resp.text, "html.parser")
 
         for card in soup.find_all("div", class_="loop-card"):
             title_tag = card.find("h3")
@@ -55,7 +58,17 @@ def scrape_articles(pages=5):
     return articles
 
 def scrape_article(url):
-    resp = requests.get(url)
+    try:
+        print(f"Fetching article: {url}")
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+    except requests.exceptions.TooManyRedirects:
+        print(f"⚠️ Skipping {url} due to redirect loop")
+        return ""
+    except requests.exceptions.RequestException as e:
+        print(f"⚠️ Error fetching {url}: {e}")
+        return ""
+
     soup = BeautifulSoup(resp.text, "html.parser")
     content_div = soup.find("div", class_="wp-block-post-content")
     if not content_div:
@@ -103,9 +116,6 @@ def insert_clean_article(raw_id, summary, keywords_found, title, url):
         "created_at": datetime.utcnow().isoformat()
     }).execute()
 
-def compute_score(found_keywords):
-    return round(len(found_keywords) * 0.10, 2)
-
 def deduplicate_clean_articles():
     response = supabase.table("clean_articles").select("*").execute()
     articles = response.data
@@ -131,10 +141,10 @@ def deduplicate_clean_articles():
 
 def main():
     articles = scrape_articles(pages=5)
-    print(f"Scraped {len(articles)} articles")
+    scraped_count = len(articles)
+    flagged_count = 0
 
-    for a in articles:
-        print(f"- {a['title']}: {a['url']}")
+    print(f"Scraped {scraped_count} articles")
 
     for article in articles:
         content = scrape_article(article['url'])
@@ -143,9 +153,20 @@ def main():
             summary = summarize_text(content)
             insert_clean_article(raw_id, summary, raw_keywords, article["title"], article["url"])
             if raw_keywords:
+                flagged_count += 1
                 print(f"✅ Flagged: {article['title']}")
                 print(f"Summary: {summary}")
                 print("-" * 80)
+
+    # Save run stats into scrape_runs
+    supabase.table("scrape_runs").insert({
+        "id": str(uuid4()),
+        "scraped_count": scraped_count,
+        "flagged_count": flagged_count,
+        "created_at": datetime.utcnow().isoformat()
+    }).execute()
+
+    print(f"📊 Run complete: Scraped {scraped_count}, Flagged {flagged_count}")
 
 if __name__ == "__main__":
     main()

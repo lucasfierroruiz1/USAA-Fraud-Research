@@ -4,3 +4,6 @@ scikit-learn
 supabase
 python-dotenv
 streamlit
+matplotlib
+seaborn
+wordcloud
