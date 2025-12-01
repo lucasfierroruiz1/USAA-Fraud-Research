@@ -1,6 +1,6 @@
 # USAA Fraud Research Dashboard 🔍  
 **Scrape → Detect → Summarize → Visualize**  
-*Author: Elver Ruiz*  
+*Author: Elver, Lucas, Precious, Zack
 
 ---
 
