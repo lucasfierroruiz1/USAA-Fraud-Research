@@ -1,24 +1,97 @@
-# USAA-Fraud-Research
-Homepage Scraping for Keywords:
+# USAA Fraud Research Dashboard 🔍  
+**Scrape → Detect → Summarize → Visualize**  
+*Author: Elver Ruiz*  
 
-Scrape the homepage for article titles.
+---
 
-Use your predefined list of keywords related to fraud/scams to flag potential articles directly from the homepage by matching these keywords in the titles.
+## Project Summary
+This repository contains the completed **USAA Fraud Research Dashboard**, developed as part of an applied data science project.  
 
-Full Article Scraping:
+The project automates the collection, detection, and summarization of **fraud-related articles** from TechCrunch.  
+It integrates **Supabase** for storage, keyword-based detection for fraud relevance, and **Streamlit** for visualization.  
+The goal is to identify fraud themes, track emerging risks, and provide concise summaries for rapid analysis.  
 
-For the flagged articles, scrape the full articles by navigating to their individual URLs.
+---
 
-Extract the entire content of each article, including the title, author, publication date, and main body text.
+## ⚙️ ETL Pipeline
 
-Model-based flagging:
+| Stage       | Description | Tools Used |
+|-------------|-------------|------------|
+| **Extract** | Scrapes TechCrunch articles (title, URL, date, full text). | `requests`, `BeautifulSoup4` |
+| **Transform** | Detects fraud keywords, generates summaries, deduplicates flagged articles. | `pandas`, `re`, custom `summarize_text` |
+| **Load**    | Uploads structured data into **Supabase**, storing raw and clean articles with metadata. | `supabase-py` |
 
-Run the full article content through your fraud detection model to confirm relevance.
+### 📊 ETL Workflow
 
-This step ensures high accuracy, reducing false positives from just title-based filtering.
+---
 
-Summarization:
+## 🧩 System Architecture
 
-Apply NLP summarization methods to generate concise summaries of the flagged articles.
+| Modality | Description | Example |
+|----------|-------------|---------|
+| **Textual (unstructured)** | Raw article text scraped from TechCrunch. | Full article body |
+| **Structured/tabular** | Metadata such as `date`, `url`, `flagged`, `keywords`. | Supabase tables |
+| **Summarized (NLP)** | Condensed article summaries highlighting fraud relevance. | `summarize_text()` output |
+| **Visual** | Streamlit-based charts showing keyword frequencies and flagged counts. | Word Cloud, Bar Charts |
 
-These summaries can be included in your reports for quick understanding and storytelling.
+---
+
+## Key Features
+✅ Automated TechCrunch scraping  
+✅ Supabase integration for centralized storage  
+✅ Keyword-based fraud detection  
+✅ Summarization of flagged articles  
+✅ Deduplication to prevent duplicate entries  
+✅ Streamlit dashboard with metrics and visualizations  
+
+---
+
+## Tech Stack
+- **Python 3.12**  
+- **Streamlit** – interactive dashboard interface  
+- **Supabase** – data storage and querying  
+- **Pandas**, **Matplotlib**, **Seaborn** – analytics and visualization  
+- **BeautifulSoup4**, **Requests** – data scraping  
+- **Custom NLP utilities** – keyword detection + summarization  
+
+---
+
+## Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/lucasfierroruiz1/USAA-Fraud-Research.git
+cd USAA-Fraud-Research
+
+uv venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_service_key
+
+uv run streamlit run streamlit_app.py
+
+Top 5 Keywords- Fraud(10), Cybercrime(8), Identity Theft(6), Phising(6), Financial Scam(5)
+
+Top 3 Fraud Trends
+- AI-driven phishing attacks
+- Identity theft from data breaches
+- Financial scams in fintech & crypto
+
+Demo-
+<img width="942" height="848" alt="Screenshot 2025-11-30 231457" src="https://github.com/user-attachments/assets/831e5215-edc4-494a-94a2-2a33dad8a56f" />
+
+
+Current Status
+✅ Scraping, detection, summarization, and Supabase integration are fully operational
+✅ Dashboard metrics and keyword visualizations functioning correctly
+✅ Deduplication logic implemented for clean data integrity
+
+Acknowledgement
+Developed for USAA Fraud Research Project
+Demonstrates applied data science using NLP, Supabase integration, and visual analytics for fraud trend monitoring.
+
+
+
+
