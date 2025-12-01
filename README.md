@@ -75,60 +75,33 @@ Clear Findings & Key Insights
 - Identity theft from breaches
 - Financial scams in fintech & crypto
 
-🎯 Why This Project is Useful
+ Why This Project is Useful
 - Provides real‑time fraud monitoring from public sources.
 - Summarizes articles for quick review.
 - Ensures data integrity with deduplication.
 - Visualizes fraud activity patterns for actionable insights.
 - Supabase integration makes the system scalable and reproducible.
 
-📽️ Visual Examples
+ Visual Examples
 - Word Cloud of fraud keywords
 - Bar chart of keyword frequencies
 - Timeline of flagged articles
 - GIF demo of dashboard filtering (date range, category dropdowns)
 
-✅ Current Status
+ Current Status
 - Scraping, detection, summarization, and Supabase integration fully operational.
 - Dashboard metrics and keyword visualizations functioning correctly.
 - Deduplication logic implemented for clean data integrity.
 
-🚀 What’s Next
+ What’s Next
 - Add date range filters and category dropdowns in the dashboard.
 - Record GIF demos of dashboard interactions.
 - Implement timelines for fraud activity trends.
 - Expand scraping sources beyond TechCrunch.
 - Enhance summarization with advanced NLP models.
 
-🙌 Acknowledgment
+ Acknowledgment
 Developed for USAA Fraud Research Project
 Demonstrates applied data science using NLP, Supabase integration, and visual analytics for fraud trend monitoring.
 
----
-
-✨ This version now fully covers the rubric:  
-- Clear first impression (title, tagline, authors, one‑sentence summary).  
-- Quick start instructions with `.env`.  
-- Architecture diagram, folder structure, workflow.  
-- Data transformation snippets.  
-- Dashboard examples, visuals, GIF placeholders.  
-- Clear findings, key insights, and usefulness.  
-
-Why This Project is Useful
-- Provides real‑time fraud monitoring from public sources.
-- Summarizes articles for quick review.
-- Ensures data integrity with deduplication.
-- Visualizes fraud activity patterns for actionable insights.
-- Supabase integration makes the system scalable and reproducible.
-
-What’s Next
-- Add date range filters and category dropdowns in the dashboard.
-- Record GIF demos of dashboard interactions.
-- Implement timelines for fraud activity trends.
-- Expand scraping sources beyond TechCrunch.
-- Enhance summarization with advanced NLP models.
-
-Acknowledgment
-Developed for USAA Fraud Research Project
-Demonstrates applied data science using NLP, Supabase integration, and visual analytics for fraud trend monitoring.
 
