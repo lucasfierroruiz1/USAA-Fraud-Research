@@ -4,7 +4,7 @@
 
 ---
 
-## Project Summary( WHat and WHy)
+## Project Summary( What and Why)
 A pipeline that scrapes TechCrunch articles, detects fraud related content, summarizes flagged entries and visualizes trends.
 
 The project automates the collection, detection, and summarization of **fraud-related articles** from TechCrunch.  
