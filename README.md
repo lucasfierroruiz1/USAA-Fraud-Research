@@ -4,8 +4,8 @@
 
 ---
 
-## Project Summary
-This repository contains the completed **USAA Fraud Research Dashboard**, developed as part of an applied data science project.  
+## Project Summary( WHat and WHy)
+A pipeline that scrapes TechCrunch articles, detects fraud related content, summarizes flagged entries and visualizes trends.
 
 The project automates the collection, detection, and summarization of **fraud-related articles** from TechCrunch.  
 It integrates **Supabase** for storage, keyword-based detection for fraud relevance, and **Streamlit** for visualization.  
@@ -33,6 +33,14 @@ The goal is to identify fraud themes, track emerging risks, and provide concise 
 | **Structured/tabular** | Metadata such as `date`, `url`, `flagged`, `keywords`. | Supabase tables |
 | **Summarized (NLP)** | Condensed article summaries highlighting fraud relevance. | `summarize_text()` output |
 | **Visual** | Streamlit-based charts showing keyword frequencies and flagged counts. | Word Cloud, Bar Charts |
+USAA-Fraud-Research/
+├── collector.py
+├── streamlit_app.py
+├── utils.py
+├── requirements.txt
+└── .env / example.env
+
+
 
 ---
 
