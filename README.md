@@ -4,17 +4,17 @@
 
 ---
 
-## 📌 Project Summary
+ Project Summary
 A pipeline that scrapes TechCrunch articles, detects fraud content, summarizes flagged entries, and visualizes fraud trends in a Streamlit dashboard powered by Supabase.  
 
 ---
 
-## ⚡ Quick Start
+ Quick Start
 ```bash
 uv venv
 source .venv/bin/activate
 uv pip install -r requirements.txt
-
+---
 Creating an .env file:
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_service_key
