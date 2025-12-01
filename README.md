@@ -7,7 +7,6 @@
  Project Summary
 A pipeline that scrapes TechCrunch articles, detects fraud content, summarizes flagged entries, and visualizes fraud trends in a Streamlit dashboard powered by Supabase.  
 
----
 
  Quick Start
 ```bash
