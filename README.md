@@ -13,7 +13,7 @@ A pipeline that scrapes TechCrunch articles, detects fraud content, summarizes f
 uv venv
 source .venv/bin/activate
 uv pip install -r requirements.txt
----
+
 Creating an .env file:
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_service_key
