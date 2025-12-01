@@ -82,6 +82,8 @@ Top 3 Fraud Trends
 Demo-
 <img width="942" height="848" alt="Screenshot 2025-11-30 231457" src="https://github.com/user-attachments/assets/831e5215-edc4-494a-94a2-2a33dad8a56f" />
 
+(Above is a screenshot of the Streamlit Dashboarrd showing our metrics and keyword visualization)
+
 
 Current Status
 ✅ Scraping, detection, summarization, and Supabase integration are fully operational
