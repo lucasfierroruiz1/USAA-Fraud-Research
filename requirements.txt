@@ -1,0 +1,15 @@
+requests
+beautifulsoup4
+scikit-learn
+supabase
+python-dotenv
+streamlit
+matplotlib
+seaborn
+wordcloud
+altair
+pandas
+numpy
+plotly
+networkx
+python-dateutil
