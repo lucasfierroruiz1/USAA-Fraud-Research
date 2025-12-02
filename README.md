@@ -126,20 +126,6 @@ python collector.py --pages 100
 
 ---
 
-## Security & Git Hygiene
-- Never commit `.env` or your virtual environment. Add them to `.gitignore`.
-- If you ever commit secrets, rotate them immediately (Supabase keys, tokens, etc.) and consider rewriting history (BFG or `git filter-repo`) before pushing.
-- Use a limited API key rather than a full service key in `.env` where possible.
-
----
-
-## Current Status
-- Local pipeline: scraping, detection, summarization, and Streamlit dashboard run locally.
-- Recent scrape runs are recorded in `scrape_runs`. Inserted rows are deduplicated by URL.
-- GitHub remote pushes may require repo cleanup if large files were committed previously.
-
----
-
 ## Acknowledgement
 Developed for USAA Fraud Research Project — a practical demonstration of applied data science using NLP, Supabase, and interactive visual analytics for fraud monitoring.
 
