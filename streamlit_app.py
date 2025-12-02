@@ -99,7 +99,10 @@ else:
                 continue
             if article["score"] < min_score:
                 continue
-            article_date = pd.to_datetime(article["created_at"]).date()
+            try:
+                article_date = pd.to_datetime(article["created_at"]).date()
+            except:
+                continue  # Skip articles with invalid dates
             if not (pd.to_datetime(start_date).date() <= article_date <= pd.to_datetime(end_date).date()):
                 continue
             
@@ -203,7 +206,7 @@ else:
                         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                         height=500
                     )
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(fig, use_container_width='stretch')
                 else:
                     st.info("Not enough keywords to build network graph.")
             else:
@@ -224,7 +227,7 @@ else:
                 )
                 fig.update_traces(marker_color='#FF6B6B')
                 fig.update_layout(height=450)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width='stretch')
             else:
                 st.info("No flagged scores to visualize.")
         
@@ -295,10 +298,10 @@ else:
                         hovermode='x unified'
                     )
 
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(fig, use_container_width='stretch')
 
                     st.markdown("**Daily Breakdown:**")
-                    st.dataframe(daily_counts.sort_values("date", ascending=False), use_container_width=True)
+                    st.dataframe(daily_counts.sort_values("date", ascending=False), use_container_width='stretch')
                 else:
                     st.info("Could not extract publication dates from article URLs.")
             else:
@@ -347,9 +350,9 @@ else:
                     color_discrete_sequence=px.colors.qualitative.Set2
                 )
                 fig.update_layout(height=450)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width='stretch')
                 
                 st.markdown("**Breakdown by Category:**")
-                st.dataframe(cat_df.sort_values("Count", ascending=False), use_container_width=True)
+                st.dataframe(cat_df.sort_values("Count", ascending=False), use_container_width='stretch')
             else:
                 st.info("No flagged articles to visualize.")
