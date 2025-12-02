@@ -116,7 +116,7 @@ python collector.py --pages 100
 
 ---
 
-## Visuals (Current)
+## Visuals 
 - **📰 Flagged Articles**: Filterable list by keyword, score, and date.
 - **📊 Visuals** (sub-tabs):
   - *Keywords Network*: keyword co-occurrence graph (NetworkX + Plotly)
