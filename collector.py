@@ -96,6 +96,8 @@ def insert_raw_article(title, url, full_text, source="TechCrunch"):
     }).execute()
     return raw_id, keywords_found
 
+from utils import embed_text
+
 def insert_clean_article(raw_id, summary, keywords_found, title, url):
     if not keywords_found:
         return  # Skip inserting if no keywords found
@@ -103,6 +105,8 @@ def insert_clean_article(raw_id, summary, keywords_found, title, url):
     flagged = True
     score = round(len(keywords_found) * 0.10, 2)
     keywords = ', '.join(sorted(set(kw.strip() for kw in keywords_found)))
+
+    embedding = embed_text(summary)  # generate embedding from summary
 
     supabase.table("clean_articles").insert({
         "id": str(uuid4()),
@@ -113,8 +117,10 @@ def insert_clean_article(raw_id, summary, keywords_found, title, url):
         "score": score,
         "title": title,
         "url": url,
+        "embedding": embedding,   # new field
         "created_at": datetime.utcnow().isoformat()
     }).execute()
+
 
 def deduplicate_clean_articles():
     response = supabase.table("clean_articles").select("*").execute()

@@ -13,3 +13,4 @@ numpy
 plotly
 networkx
 python-dateutil
+sentence-transformers
